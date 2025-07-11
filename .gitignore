@@ -1,0 +1,17 @@
+# Godot files
+.import/
+export.cfg
+export_presets.cfg
+*.tmp
+.mono/
+data_*/
+.vscode/
+
+# OS specific files
+.DS_Store
+Thumbs.db
+
+# Logs and cache
+logs/
+*.log
+.cache/ 
