@@ -153,13 +153,13 @@ EchoId = "memory_essence"
 [node name="Enemies" type="Node2D" parent="."]
 
 [node name="CorruptedBot1" parent="Enemies" instance=ExtResource( 3 )]
-position = Vector2( 750, 325 )
+position = Vector2( 600, 340 )
 
 [node name="CorruptedBot2" parent="Enemies" instance=ExtResource( 3 )]
-position = Vector2( 900, 275 )
+position = Vector2( 900, 290 )
 
 [node name="CorruptedBot3" parent="Enemies" instance=ExtResource( 3 )]
-position = Vector2( 1200, 225 )
+position = Vector2( 1200, 240 )
 
 [node name="SpawnPoints" type="Node2D" parent="."]
 

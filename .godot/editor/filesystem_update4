@@ -1,2 +1,4 @@
+res://Scenes/Level2.tscn
 res://Scripts/Echo.gd
 res://Scripts/Player.gd
+res://Scenes/Level3.tscn

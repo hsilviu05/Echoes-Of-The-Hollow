@@ -34,13 +34,9 @@ func _physics_process(delta):
 		
 	if spawn_protection > 0:
 		spawn_protection -= delta
-		# Visual feedback for spawn protection - very subtle flicker
+		# Keep player fully visible during spawn protection
 		if animated_sprite:
-			var flicker = 0.95 + 0.05 * sin(spawn_protection * 10)
-			animated_sprite.modulate.a = flicker
-			# Debug output
-			if spawn_protection > 1.8:  # Only show debug for first 0.2 seconds
-				print("Spawn protection: ", spawn_protection, " Alpha: ", flicker)
+			animated_sprite.modulate.a = 1.0
 	else:
 		if animated_sprite:
 			animated_sprite.modulate.a = 1.0

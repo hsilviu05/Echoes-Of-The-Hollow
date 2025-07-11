@@ -1,227 +1,238 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=9 format=3 uid="uid://chxyr67kfr5dd"]
 
-[ext_resource path="res://Scenes/Echo.tscn" type="PackedScene" id=1]
-[ext_resource path="res://Sprites/ground_tile.png" type="Texture2D" id=2]
-[ext_resource path="res://Scenes/CorruptedBot.tscn" type="PackedScene" id=3]
+[ext_resource type="PackedScene" path="res://Scenes/Echo.tscn" id="1"]
+[ext_resource type="Texture2D" uid="uid://cwjwp3nwmhhmg" path="res://Sprites/ground_tile.png" id="2"]
+[ext_resource type="PackedScene" path="res://Scenes/CorruptedBot.tscn" id="3"]
+[ext_resource type="PackedScene" path="res://Scenes/Player.tscn" id="4_5awjf"]
 
-[sub_resource type="ConvexPolygonShape2D" id=1]
-points = PackedVector2Array( 32, 32, 0, 32, 0, 0, 32, 0 )
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_n3cqh"]
+texture = ExtResource("2")
+texture_region_size = Vector2i(1024, 1024)
+0:0/next_alternative_id = 8
+0:0/0 = 0
+0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-480, -480, -512, -480, -512, -512, -480, -512)
+0:0/1 = 1
+0:0/1/flip_h = true
+0:0/1/physics_layer_0/polygon_0/points = PackedVector2Array(480, -480, 512, -480, 512, -512, 480, -512)
+0:0/2 = 2
+0:0/2/flip_v = true
+0:0/2/physics_layer_0/polygon_0/points = PackedVector2Array(-480, 480, -512, 480, -512, 512, -480, 512)
+0:0/3 = 3
+0:0/3/flip_h = true
+0:0/3/flip_v = true
+0:0/3/physics_layer_0/polygon_0/points = PackedVector2Array(480, 480, 512, 480, 512, 512, 480, 512)
+0:0/4 = 4
+0:0/4/transpose = true
+0:0/4/physics_layer_0/polygon_0/points = PackedVector2Array(-480, -480, -480, -512, -512, -512, -512, -480)
+0:0/5 = 5
+0:0/5/flip_h = true
+0:0/5/transpose = true
+0:0/5/physics_layer_0/polygon_0/points = PackedVector2Array(480, -480, 480, -512, 512, -512, 512, -480)
+0:0/6 = 6
+0:0/6/flip_v = true
+0:0/6/transpose = true
+0:0/6/physics_layer_0/polygon_0/points = PackedVector2Array(-480, 480, -480, 512, -512, 512, -512, 480)
+0:0/7 = 7
+0:0/7/flip_h = true
+0:0/7/flip_v = true
+0:0/7/transpose = true
+0:0/7/physics_layer_0/polygon_0/points = PackedVector2Array(480, 480, 480, 512, 512, 512, 512, 480)
 
-[sub_resource type="TileSet" id=2]
-0/name = "ground_tile.png 0"
-0/texture = ExtResource( 2 )
-0/tex_offset = Vector2( 0, 0 )
-0/modulate = Color( 1, 1, 1, 1 )
-0/region = Rect2( 0, 0, 1024, 1024 )
-0/tile_mode = 0
-0/occluder_offset = Vector2( 0, 0 )
-0/navigation_offset = Vector2( 0, 0 )
-0/shape_offset = Vector2( 0, 0 )
-0/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
-0/shape = SubResource( 1 )
-0/shape_one_way = false
-0/shape_one_way_margin = 1.0
-0/shapes = [ {
-"autotile_coord": Vector2( 0, 0 ),
-"one_way": false,
-"one_way_margin": 1.0,
-"shape": SubResource( 1 ),
-"shape_transform": Transform2D( 1, 0, 0, 1, 0, 0 )
-} ]
-0/z_index = 0
+[sub_resource type="TileSet" id="2"]
+tile_size = Vector2i(1024, 1024)
+physics_layer_0/collision_layer = 1
+sources/0 = SubResource("TileSetAtlasSource_n3cqh")
 
-[sub_resource type="RectangleShape2D" id=3]
-extents = Vector2( 100, 10 )
+[sub_resource type="RectangleShape2D" id="3"]
+size = Vector2(200, 20)
 
-[sub_resource type="RectangleShape2D" id=4]
-extents = Vector2( 1000, 50 )
+[sub_resource type="RectangleShape2D" id="4"]
+size = Vector2(2000, 100)
 
 [node name="Level2" type="Node2D"]
 
 [node name="Environment" type="Node2D" parent="."]
 
 [node name="Background" type="ColorRect" parent="Environment"]
+anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 offset_right = 2000.0
 offset_bottom = 1000.0
-color = Color( 0.05, 0.05, 0.1, 1 )
+color = Color(0.05, 0.05, 0.1, 1)
 
 [node name="TileMap" type="TileMap" parent="Environment"]
-scale = Vector2( 0.09375, 0.09375 )
-tile_set = SubResource( 2 )
-collision_layer = 4
-collision_mask = 0
-format = 1
-tile_data = PackedInt32Array( 524289, 0, 0, 524290, 0, 0, 524291, 0, 0, 524292, 0, 0, 524293, 0, 0, 524294, 0, 0, 524295, 0, 0, 524296, 0, 0, 524297, 0, 0, 524298, 0, 0, 524299, 0, 0, 524300, 0, 0, 524301, 0, 0, 524302, 0, 0, 524303, 0, 0, 524304, 0, 0, 524305, 0, 0, 524306, 0, 0, 524307, 0, 0, 524308, 0, 0, 524309, 0, 0, 524310, 0, 0, 524311, 0, 0, 524312, 0, 0, 524313, 0, 0, 524314, 0, 0, 524315, 0, 0, 524316, 0, 0, 524317, 0, 0, 524318, 0, 0, 524319, 0, 0, 524320, 0, 0, 524321, 0, 0, 524322, 0, 0, 524323, 0, 0, 524324, 0, 0, 524325, 0, 0, 524326, 0, 0, 524327, 0, 0, 524328, 0, 0, 524329, 0, 0, 524330, 0, 0, 524331, 0, 0, 524332, 0, 0, 524333, 0, 0, 524334, 0, 0, 524335, 0, 0, 524336, 0, 0, 524337, 0, 0, 524338, 0, 0, 524339, 0, 0, 524340, 0, 0, 524341, 0, 0, 524342, 0, 0, 524343, 0, 0, 524344, 0, 0, 524345, 0, 0, 524346, 0, 0, 524347, 0, 0, 524348, 0, 0, 524349, 0, 0, 524350, 0, 0, 524351, 0, 0, 524352, 0, 0, 524353, 0, 0, 524354, 0, 0, 524355, 0, 0, 524356, 0, 0, 524357, 0, 0, 524358, 0, 0, 524359, 0, 0, 524360, 0, 0, 524361, 0, 0, 524362, 0, 0, 589825, 0, 0, 589826, 0, 0, 589827, 0, 0, 589828, 0, 0, 589829, 0, 0, 589830, 0, 0, 589831, 0, 0, 589832, 0, 0, 589833, 0, 0, 589834, 0, 0, 589835, 0, 0, 589836, 0, 0, 589837, 0, 0, 589838, 0, 0, 589839, 0, 0, 589840, 0, 0, 589841, 0, 0, 589842, 0, 0, 589843, 0, 0, 589844, 0, 0, 589845, 0, 0, 589846, 0, 0, 589847, 0, 0, 589848, 0, 0, 589849, 0, 0, 589850, 0, 0, 589851, 0, 0, 589852, 0, 0, 589853, 0, 0, 589854, 0, 0, 589855, 0, 0, 589856, 0, 0, 589857, 0, 0, 589858, 0, 0, 589859, 0, 0, 589860, 0, 0, 589861, 0, 0, 589862, 0, 0, 589863, 0, 0, 589864, 0, 0, 589865, 0, 0, 589866, 0, 0, 589867, 0, 0, 589868, 0, 0, 589869, 0, 0, 589870, 0, 0, 589871, 0, 0, 589872, 0, 0, 589873, 0, 0, 589874, 0, 0, 589875, 0, 0, 589876, 0, 0, 589877, 0, 0, 589878, 0, 0, 589879, 0, 0, 589880, 0, 0, 589881, 0, 0, 589882, 0, 0, 589883, 0, 0, 589884, 0, 0, 589885, 0, 0, 589886, 0, 0, 589887, 0, 0, 589888, 0, 0, 589889, 0, 0, 589890, 0, 0, 589891, 0, 0, 589892, 0, 0, 589893, 0, 0, 589894, 0, 0, 589895, 0, 0, 589896, 0, 0, 589897, 0, 0, 589898, 0, 0 )
+scale = Vector2(0.09375, 0.09375)
+tile_set = SubResource("2")
+format = 2
 
 [node name="Platforms" type="Node2D" parent="Environment"]
 
 [node name="Platform1" type="StaticBody2D" parent="Environment/Platforms"]
-position = Vector2( 200, 450 )
+position = Vector2(200, 450)
 collision_layer = 4
 collision_mask = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Environment/Platforms/Platform1"]
-shape = SubResource( 3 )
+shape = SubResource("3")
 
 [node name="ColorRect" type="ColorRect" parent="Environment/Platforms/Platform1"]
 offset_left = -100.0
 offset_top = -10.0
 offset_right = 100.0
 offset_bottom = 10.0
-color = Color( 0.3, 0.3, 0.4, 1 )
+color = Color(0.3, 0.3, 0.4, 1)
 
 [node name="Platform2" type="StaticBody2D" parent="Environment/Platforms"]
-position = Vector2( 500, 380 )
+position = Vector2(500, 380)
 collision_layer = 4
 collision_mask = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Environment/Platforms/Platform2"]
-shape = SubResource( 3 )
+shape = SubResource("3")
 
 [node name="ColorRect" type="ColorRect" parent="Environment/Platforms/Platform2"]
 offset_left = -100.0
 offset_top = -10.0
 offset_right = 100.0
 offset_bottom = 10.0
-color = Color( 0.3, 0.3, 0.4, 1 )
+color = Color(0.3, 0.3, 0.4, 1)
 
 [node name="Platform3" type="StaticBody2D" parent="Environment/Platforms"]
-position = Vector2( 800, 320 )
+position = Vector2(800, 320)
 collision_layer = 4
 collision_mask = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Environment/Platforms/Platform3"]
-shape = SubResource( 3 )
+shape = SubResource("3")
 
 [node name="ColorRect" type="ColorRect" parent="Environment/Platforms/Platform3"]
 offset_left = -100.0
 offset_top = -10.0
 offset_right = 100.0
 offset_bottom = 10.0
-color = Color( 0.3, 0.3, 0.4, 1 )
+color = Color(0.3, 0.3, 0.4, 1)
 
 [node name="Platform4" type="StaticBody2D" parent="Environment/Platforms"]
-position = Vector2( 1100, 400 )
+position = Vector2(1100, 400)
 collision_layer = 4
 collision_mask = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Environment/Platforms/Platform4"]
-shape = SubResource( 3 )
+shape = SubResource("3")
 
 [node name="ColorRect" type="ColorRect" parent="Environment/Platforms/Platform4"]
 offset_left = -100.0
 offset_top = -10.0
 offset_right = 100.0
 offset_bottom = 10.0
-color = Color( 0.3, 0.3, 0.4, 1 )
+color = Color(0.3, 0.3, 0.4, 1)
 
 [node name="Platform5" type="StaticBody2D" parent="Environment/Platforms"]
-position = Vector2( 1400, 280 )
+position = Vector2(1400, 280)
 collision_layer = 4
 collision_mask = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Environment/Platforms/Platform5"]
-shape = SubResource( 3 )
+shape = SubResource("3")
 
 [node name="ColorRect" type="ColorRect" parent="Environment/Platforms/Platform5"]
 offset_left = -100.0
 offset_top = -10.0
 offset_right = 100.0
 offset_bottom = 10.0
-color = Color( 0.3, 0.3, 0.4, 1 )
+color = Color(0.3, 0.3, 0.4, 1)
 
 [node name="DeathZone" type="Area2D" parent="Environment"]
-position = Vector2( 1000, 600 )
+position = Vector2(1000, 600)
 collision_layer = 0
-collision_mask = 1
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Environment/DeathZone"]
-shape = SubResource( 4 )
+shape = SubResource("4")
 
 [node name="ColorRect" type="ColorRect" parent="Environment/DeathZone"]
 offset_left = -1000.0
 offset_top = -50.0
 offset_right = 1000.0
 offset_bottom = 50.0
-color = Color( 0.8, 0.2, 0.2, 0.3 )
+color = Color(0.8, 0.2, 0.2, 0.3)
 
 [node name="Echoes" type="Node2D" parent="."]
 
-[node name="Echo1" parent="Echoes" instance=ExtResource( 1 )]
-position = Vector2( 200, 400 )
+[node name="Echo1" parent="Echoes" instance=ExtResource("1")]
+position = Vector2(200, 400)
 EchoId = "crystal_shard"
 
-[node name="Echo2" parent="Echoes" instance=ExtResource( 1 )]
-position = Vector2( 500, 330 )
+[node name="Echo2" parent="Echoes" instance=ExtResource("1")]
+position = Vector2(500, 330)
 EchoId = "void_essence"
 
-[node name="Echo3" parent="Echoes" instance=ExtResource( 1 )]
-position = Vector2( 800, 270 )
+[node name="Echo3" parent="Echoes" instance=ExtResource("1")]
+position = Vector2(800, 270)
 EchoId = "shadow_fragment"
 
-[node name="Echo4" parent="Echoes" instance=ExtResource( 1 )]
-position = Vector2( 1100, 350 )
+[node name="Echo4" parent="Echoes" instance=ExtResource("1")]
+position = Vector2(1100, 350)
 EchoId = "whisper_core"
 
-[node name="Echo5" parent="Echoes" instance=ExtResource( 1 )]
-position = Vector2( 1400, 230 )
+[node name="Echo5" parent="Echoes" instance=ExtResource("1")]
+position = Vector2(1400, 230)
 EchoId = "hollow_memory"
 
 [node name="Enemies" type="Node2D" parent="."]
 
-[node name="CorruptedBot1" parent="Enemies" instance=ExtResource( 3 )]
-position = Vector2( 500, 360 )
+[node name="CorruptedBot1" parent="Enemies" instance=ExtResource("3")]
+position = Vector2(500, 360)
 
-[node name="CorruptedBot2" parent="Enemies" instance=ExtResource( 3 )]
-position = Vector2( 800, 300 )
+[node name="CorruptedBot2" parent="Enemies" instance=ExtResource("3")]
+position = Vector2(800, 300)
 
-[node name="CorruptedBot3" parent="Enemies" instance=ExtResource( 3 )]
-position = Vector2( 1100, 380 )
+[node name="CorruptedBot3" parent="Enemies" instance=ExtResource("3")]
+position = Vector2(1100, 380)
 
-[node name="CorruptedBot4" parent="Enemies" instance=ExtResource( 3 )]
-position = Vector2( 1400, 260 )
+[node name="CorruptedBot4" parent="Enemies" instance=ExtResource("3")]
+position = Vector2(1400, 260)
 
 [node name="SpawnPoints" type="Node2D" parent="."]
 
 [node name="PlayerSpawn" type="Marker2D" parent="SpawnPoints"]
-position = Vector2( 200, 430 )
+position = Vector2(200, 430)
+
+[node name="Player" parent="SpawnPoints" instance=ExtResource("4_5awjf")]
+position = Vector2(160, 398)
 
 [node name="RegionTransitions" type="Node2D" parent="."]
 
 [node name="ToLevel1" type="Area2D" parent="RegionTransitions" groups=["transitions"]]
-position = Vector2( 100, 450 )
+position = Vector2(100, 450)
 collision_layer = 0
-collision_mask = 1
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="RegionTransitions/ToLevel1"]
-shape = SubResource( 3 )
+shape = SubResource("3")
 
 [node name="Label" type="Label" parent="RegionTransitions/ToLevel1"]
-offset_left = -50.0
-offset_top = -20.0
-offset_right = 50.0
-offset_bottom = 20.0
+offset_left = -69.0
+offset_top = -231.0
+offset_right = 46.0
+offset_bottom = -191.0
+theme_override_colors/font_color = Color(0.8, 0.8, 1, 1)
 text = "Back to Level 1"
-align = 1
-valign = 1
-theme_override_colors/font_color = Color( 0.8, 0.8, 1, 1 )
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="ToLevel3" type="Area2D" parent="RegionTransitions" groups=["transitions"]]
-position = Vector2( 1700, 280 )
+position = Vector2(1700, 280)
 collision_layer = 0
-collision_mask = 1
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="RegionTransitions/ToLevel3"]
-shape = SubResource( 3 )
+shape = SubResource("3")
 
 [node name="Label" type="Label" parent="RegionTransitions/ToLevel3"]
 offset_left = -50.0
 offset_top = -20.0
 offset_right = 50.0
 offset_bottom = 20.0
+theme_override_colors/font_color = Color(0.8, 0.8, 1, 1)
 text = "To Level 3"
-align = 1
-valign = 1
-theme_override_colors/font_color = Color( 0.8, 0.8, 1, 1 ) 
+horizontal_alignment = 1
+vertical_alignment = 1
