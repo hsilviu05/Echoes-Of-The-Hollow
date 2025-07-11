@@ -62,6 +62,15 @@ func create_level_selector():
 	level_button.pressed.connect(show_level_menu)
 	add_child(level_button)
 	
+	# Main menu button (top right, below levels)
+	var main_menu_button = Button.new()
+	main_menu_button.text = "Main Menu"
+	main_menu_button.position = Vector2(get_viewport().size.x - 100, 60)
+	main_menu_button.size = Vector2(80, 30)
+	main_menu_button.add_theme_color_override("font_color", Color.WHITE)
+	main_menu_button.pressed.connect(_on_main_menu_pressed)
+	add_child(main_menu_button)
+	
 	# Level popup menu
 	level_popup = PopupMenu.new()
 	level_popup.add_item("Level 1 - TestLevel")
@@ -161,9 +170,14 @@ func update_health(value: float):
 
 func _notification(what):
 	if what == NOTIFICATION_RESIZED:
-		# Update level button position when screen is resized
+		# Update button positions when screen is resized
 		if level_button:
 			level_button.position = Vector2(get_viewport().size.x - 100, 20)
+		
+		# Update main menu button position
+		var main_menu_button = get_node_or_null("MainMenuButton") 
+		if main_menu_button:
+			main_menu_button.position = Vector2(get_viewport().size.x - 100, 60)
 
 func show_completion_screen():
 	# Create completion screen
@@ -209,6 +223,15 @@ func restart_from_beginning():
 	
 	# Reset game state
 	restart_game()
+
+func _on_main_menu_pressed():
+	print("Returning to main menu")
+	var menu_manager = get_node("/root/MenuManager")
+	if menu_manager:
+		menu_manager.quit_to_main_menu()
+	else:
+		# Fallback - directly change scene
+		get_tree().change_scene_to_file("res://Scenes/StartMenu.tscn")
 
 func show_level_completion_message(level_name: String):
 	# Create temporary celebration overlay

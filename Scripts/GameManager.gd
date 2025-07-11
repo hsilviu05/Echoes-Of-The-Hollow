@@ -96,7 +96,7 @@ func advance_to_next_level(current_level_name: String):
 		print("🏆 Game completed! You've finished all levels!")
 		
 		# Make player invincible
-		var player = get_node("/root/Main/Player")
+		var player = get_tree().get_first_node_in_group("player")
 		if player:
 			player.enable_invincibility()
 		
@@ -125,10 +125,15 @@ func show_level_completion_message(level_name: String):
 		ui_manager.show_level_completion_message(level_name)
 
 func show_completion_message():
-	# Show game completion UI
-	var ui_manager = get_tree().get_first_node_in_group("ui")
-	if ui_manager:
-		ui_manager.show_completion_screen()
+	# Trigger victory screen through MenuManager
+	var menu_manager = get_node("/root/MenuManager")
+	if menu_manager:
+		menu_manager.on_game_completed(echo_count)
+	else:
+		# Fallback - show game completion UI
+		var ui_manager = get_tree().get_first_node_in_group("ui")
+		if ui_manager:
+			ui_manager.show_completion_screen()
 
 func reset_echoes():
 	collected_echoes.clear()

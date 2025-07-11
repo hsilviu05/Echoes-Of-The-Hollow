@@ -1,9 +1,10 @@
-[gd_scene load_steps=9 format=3 uid="uid://dakhllmw6k3vh"]
+[gd_scene load_steps=10 format=3 uid="uid://dakhllmw6k3vh"]
 
 [ext_resource type="PackedScene" path="res://Scenes/Echo.tscn" id="1"]
-[ext_resource type="Texture2D" uid="uid://cwjwp3nwmhhmg" path="res://Sprites/ground_tile.png" id="2"]
+[ext_resource type="Texture2D" uid="uid://briet8rlcj1p8" path="res://Sprites/ground_tile.png" id="2"]
 [ext_resource type="PackedScene" path="res://Scenes/CorruptedBot.tscn" id="3"]
 [ext_resource type="PackedScene" path="res://Scenes/Player.tscn" id="4_7tk33"]
+[ext_resource type="Texture2D" uid="uid://bpyetf0tpscd3" path="res://Sprites/parallax_layer_3.png" id="5"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_y6vx4"]
 texture = ExtResource("2")
@@ -53,13 +54,10 @@ size = Vector2(2000, 100)
 
 [node name="Environment" type="Node2D" parent="."]
 
-[node name="Background" type="ColorRect" parent="Environment"]
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_right = 2000.0
-offset_bottom = 1000.0
-color = Color(0.02, 0.02, 0.05, 1)
+[node name="Background" type="Sprite2D" parent="Environment"]
+position = Vector2(1000, 500)
+scale = Vector2(1.302, 0.977)
+texture = ExtResource("5")
 
 [node name="TileMap" type="TileMap" parent="Environment"]
 scale = Vector2(0.09375, 0.09375)
@@ -76,12 +74,25 @@ collision_mask = 0
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Environment/Platforms/Platform1"]
 shape = SubResource("3")
 
-[node name="ColorRect" type="ColorRect" parent="Environment/Platforms/Platform1"]
-offset_left = -100.0
-offset_top = -10.0
-offset_right = 100.0
-offset_bottom = 10.0
-color = Color(0.2, 0.2, 0.3, 1)
+[node name="Tile1" type="Sprite2D" parent="Environment/Platforms/Platform1"]
+position = Vector2(-75, 0)
+scale = Vector2(0.0488281, 0.0488281)
+texture = ExtResource("2")
+
+[node name="Tile2" type="Sprite2D" parent="Environment/Platforms/Platform1"]
+position = Vector2(-25, 0)
+scale = Vector2(0.0488281, 0.0488281)
+texture = ExtResource("2")
+
+[node name="Tile3" type="Sprite2D" parent="Environment/Platforms/Platform1"]
+position = Vector2(25, 0)
+scale = Vector2(0.0488281, 0.0488281)
+texture = ExtResource("2")
+
+[node name="Tile4" type="Sprite2D" parent="Environment/Platforms/Platform1"]
+position = Vector2(75, 0)
+scale = Vector2(0.0488281, 0.0488281)
+texture = ExtResource("2")
 
 [node name="Platform2" type="StaticBody2D" parent="Environment/Platforms"]
 position = Vector2(400, 420)
@@ -91,12 +102,25 @@ collision_mask = 0
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Environment/Platforms/Platform2"]
 shape = SubResource("3")
 
-[node name="ColorRect" type="ColorRect" parent="Environment/Platforms/Platform2"]
-offset_left = -100.0
-offset_top = -10.0
-offset_right = 100.0
-offset_bottom = 10.0
-color = Color(0.2, 0.2, 0.3, 1)
+[node name="Tile1" type="Sprite2D" parent="Environment/Platforms/Platform2"]
+position = Vector2(-75, 0)
+scale = Vector2(0.0488281, 0.0488281)
+texture = ExtResource("2")
+
+[node name="Tile2" type="Sprite2D" parent="Environment/Platforms/Platform2"]
+position = Vector2(-25, 0)
+scale = Vector2(0.0488281, 0.0488281)
+texture = ExtResource("2")
+
+[node name="Tile3" type="Sprite2D" parent="Environment/Platforms/Platform2"]
+position = Vector2(25, 0)
+scale = Vector2(0.0488281, 0.0488281)
+texture = ExtResource("2")
+
+[node name="Tile4" type="Sprite2D" parent="Environment/Platforms/Platform2"]
+position = Vector2(75, 0)
+scale = Vector2(0.0488281, 0.0488281)
+texture = ExtResource("2")
 
 [node name="Platform3" type="StaticBody2D" parent="Environment/Platforms"]
 position = Vector2(650, 360)
@@ -106,12 +130,25 @@ collision_mask = 0
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Environment/Platforms/Platform3"]
 shape = SubResource("3")
 
-[node name="ColorRect" type="ColorRect" parent="Environment/Platforms/Platform3"]
-offset_left = -100.0
-offset_top = -10.0
-offset_right = 100.0
-offset_bottom = 10.0
-color = Color(0.2, 0.2, 0.3, 1)
+[node name="Tile1" type="Sprite2D" parent="Environment/Platforms/Platform3"]
+position = Vector2(-75, 0)
+scale = Vector2(0.0488281, 0.0488281)
+texture = ExtResource("2")
+
+[node name="Tile2" type="Sprite2D" parent="Environment/Platforms/Platform3"]
+position = Vector2(-25, 0)
+scale = Vector2(0.0488281, 0.0488281)
+texture = ExtResource("2")
+
+[node name="Tile3" type="Sprite2D" parent="Environment/Platforms/Platform3"]
+position = Vector2(25, 0)
+scale = Vector2(0.0488281, 0.0488281)
+texture = ExtResource("2")
+
+[node name="Tile4" type="Sprite2D" parent="Environment/Platforms/Platform3"]
+position = Vector2(75, 0)
+scale = Vector2(0.0488281, 0.0488281)
+texture = ExtResource("2")
 
 [node name="Platform4" type="StaticBody2D" parent="Environment/Platforms"]
 position = Vector2(900, 300)
@@ -121,12 +158,25 @@ collision_mask = 0
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Environment/Platforms/Platform4"]
 shape = SubResource("3")
 
-[node name="ColorRect" type="ColorRect" parent="Environment/Platforms/Platform4"]
-offset_left = -100.0
-offset_top = -10.0
-offset_right = 100.0
-offset_bottom = 10.0
-color = Color(0.2, 0.2, 0.3, 1)
+[node name="Tile1" type="Sprite2D" parent="Environment/Platforms/Platform4"]
+position = Vector2(-75, 0)
+scale = Vector2(0.0488281, 0.0488281)
+texture = ExtResource("2")
+
+[node name="Tile2" type="Sprite2D" parent="Environment/Platforms/Platform4"]
+position = Vector2(-25, 0)
+scale = Vector2(0.0488281, 0.0488281)
+texture = ExtResource("2")
+
+[node name="Tile3" type="Sprite2D" parent="Environment/Platforms/Platform4"]
+position = Vector2(25, 0)
+scale = Vector2(0.0488281, 0.0488281)
+texture = ExtResource("2")
+
+[node name="Tile4" type="Sprite2D" parent="Environment/Platforms/Platform4"]
+position = Vector2(75, 0)
+scale = Vector2(0.0488281, 0.0488281)
+texture = ExtResource("2")
 
 [node name="Platform5" type="StaticBody2D" parent="Environment/Platforms"]
 position = Vector2(1150, 240)
@@ -136,12 +186,25 @@ collision_mask = 0
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Environment/Platforms/Platform5"]
 shape = SubResource("3")
 
-[node name="ColorRect" type="ColorRect" parent="Environment/Platforms/Platform5"]
-offset_left = -100.0
-offset_top = -10.0
-offset_right = 100.0
-offset_bottom = 10.0
-color = Color(0.2, 0.2, 0.3, 1)
+[node name="Tile1" type="Sprite2D" parent="Environment/Platforms/Platform5"]
+position = Vector2(-75, 0)
+scale = Vector2(0.0488281, 0.0488281)
+texture = ExtResource("2")
+
+[node name="Tile2" type="Sprite2D" parent="Environment/Platforms/Platform5"]
+position = Vector2(-25, 0)
+scale = Vector2(0.0488281, 0.0488281)
+texture = ExtResource("2")
+
+[node name="Tile3" type="Sprite2D" parent="Environment/Platforms/Platform5"]
+position = Vector2(25, 0)
+scale = Vector2(0.0488281, 0.0488281)
+texture = ExtResource("2")
+
+[node name="Tile4" type="Sprite2D" parent="Environment/Platforms/Platform5"]
+position = Vector2(75, 0)
+scale = Vector2(0.0488281, 0.0488281)
+texture = ExtResource("2")
 
 [node name="Platform6" type="StaticBody2D" parent="Environment/Platforms"]
 position = Vector2(1400, 180)
@@ -151,12 +214,25 @@ collision_mask = 0
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Environment/Platforms/Platform6"]
 shape = SubResource("3")
 
-[node name="ColorRect" type="ColorRect" parent="Environment/Platforms/Platform6"]
-offset_left = -100.0
-offset_top = -10.0
-offset_right = 100.0
-offset_bottom = 10.0
-color = Color(0.2, 0.2, 0.3, 1)
+[node name="Tile1" type="Sprite2D" parent="Environment/Platforms/Platform6"]
+position = Vector2(-75, 0)
+scale = Vector2(0.0488281, 0.0488281)
+texture = ExtResource("2")
+
+[node name="Tile2" type="Sprite2D" parent="Environment/Platforms/Platform6"]
+position = Vector2(-25, 0)
+scale = Vector2(0.0488281, 0.0488281)
+texture = ExtResource("2")
+
+[node name="Tile3" type="Sprite2D" parent="Environment/Platforms/Platform6"]
+position = Vector2(25, 0)
+scale = Vector2(0.0488281, 0.0488281)
+texture = ExtResource("2")
+
+[node name="Tile4" type="Sprite2D" parent="Environment/Platforms/Platform6"]
+position = Vector2(75, 0)
+scale = Vector2(0.0488281, 0.0488281)
+texture = ExtResource("2")
 
 [node name="Platform7" type="StaticBody2D" parent="Environment/Platforms"]
 position = Vector2(1650, 120)
@@ -166,12 +242,25 @@ collision_mask = 0
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Environment/Platforms/Platform7"]
 shape = SubResource("3")
 
-[node name="ColorRect" type="ColorRect" parent="Environment/Platforms/Platform7"]
-offset_left = -100.0
-offset_top = -10.0
-offset_right = 100.0
-offset_bottom = 10.0
-color = Color(0.2, 0.2, 0.3, 1)
+[node name="Tile1" type="Sprite2D" parent="Environment/Platforms/Platform7"]
+position = Vector2(-75, 0)
+scale = Vector2(0.0488281, 0.0488281)
+texture = ExtResource("2")
+
+[node name="Tile2" type="Sprite2D" parent="Environment/Platforms/Platform7"]
+position = Vector2(-25, 0)
+scale = Vector2(0.0488281, 0.0488281)
+texture = ExtResource("2")
+
+[node name="Tile3" type="Sprite2D" parent="Environment/Platforms/Platform7"]
+position = Vector2(25, 0)
+scale = Vector2(0.0488281, 0.0488281)
+texture = ExtResource("2")
+
+[node name="Tile4" type="Sprite2D" parent="Environment/Platforms/Platform7"]
+position = Vector2(75, 0)
+scale = Vector2(0.0488281, 0.0488281)
+texture = ExtResource("2")
 
 [node name="DeathZone" type="Area2D" parent="Environment"]
 position = Vector2(1000, 600)
@@ -185,7 +274,7 @@ offset_left = -1000.0
 offset_top = -50.0
 offset_right = 1000.0
 offset_bottom = 50.0
-color = Color(0.8, 0.2, 0.2, 0.3)
+color = Color(0.8, 0.2, 0.2, 0.0)
 
 [node name="Echoes" type="Node2D" parent="."]
 

@@ -52,13 +52,18 @@ func _physics_process(delta):
 	# Set velocity
 	velocity.x = direction * speed
 	
-	# Apply gravity
+	# Apply gravity with better floor snapping
 	if not is_on_floor():
 		velocity.y += get_physics_gravity() * delta
 	else:
+		# Snap to floor when on ground to prevent floating
 		velocity.y = 0
 	
 	move_and_slide()
+	
+	# Additional floor snapping for better platform adherence
+	if is_on_floor() and velocity.y >= 0:
+		velocity.y = 0
 	
 	# Animation
 	if animated_sprite:
