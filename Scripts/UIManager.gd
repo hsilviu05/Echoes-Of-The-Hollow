@@ -163,4 +163,87 @@ func _notification(what):
 	if what == NOTIFICATION_RESIZED:
 		# Update level button position when screen is resized
 		if level_button:
-			level_button.position = Vector2(get_viewport().size.x - 100, 20) 
+			level_button.position = Vector2(get_viewport().size.x - 100, 20)
+
+func show_completion_screen():
+	# Create completion screen
+	var completion_screen = Control.new()
+	completion_screen.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
+	add_child(completion_screen)
+	
+	# Semi-transparent background
+	var bg = ColorRect.new()
+	bg.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
+	bg.color = Color(0, 0, 0, 0.8)
+	completion_screen.add_child(bg)
+	
+	# Completion message
+	var completion_label = Label.new()
+	completion_label.text = "🏆 GAME COMPLETED! 🏆\nYou collected all echoes!"
+	completion_label.set_anchors_and_offsets_preset(Control.PRESET_CENTER)
+	completion_label.position = Vector2(-150, -80)
+	completion_label.size = Vector2(300, 80)
+	completion_label.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
+	completion_label.vertical_alignment = VERTICAL_ALIGNMENT_CENTER
+	completion_label.add_theme_color_override("font_color", Color.GOLD)
+	completion_label.add_theme_font_size_override("font_size", 24)
+	completion_screen.add_child(completion_label)
+	
+	# Restart button
+	var restart_button = Button.new()
+	restart_button.text = "Play Again"
+	restart_button.set_anchors_and_offsets_preset(Control.PRESET_CENTER)
+	restart_button.position = Vector2(-60, 20)
+	restart_button.size = Vector2(120, 40)
+	restart_button.pressed.connect(func(): 
+		completion_screen.queue_free()
+		restart_from_beginning()
+	)
+	completion_screen.add_child(restart_button)
+
+func restart_from_beginning():
+	# Reset game to first level
+	var level_manager = get_node("/root/Main/LevelManager")
+	if level_manager:
+		level_manager.load_level("TestLevel")
+	
+	# Reset game state
+	restart_game()
+
+func show_level_completion_message(level_name: String):
+	# Create temporary celebration overlay
+	var celebration_overlay = Control.new()
+	celebration_overlay.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
+	add_child(celebration_overlay)
+	
+	# Semi-transparent background
+	var bg = ColorRect.new()
+	bg.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
+	bg.color = Color(0, 0, 0, 0.6)
+	celebration_overlay.add_child(bg)
+	
+	# Celebration message
+	var celebration_label = Label.new()
+	var next_level_text = ""
+	match level_name:
+		"TestLevel":
+			next_level_text = "Moving to Level 2..."
+		"Level2":
+			next_level_text = "Moving to Level 3..."
+		"Level3":
+			next_level_text = "Game Completed!"
+	
+	celebration_label.text = "🎉 LEVEL COMPLETED! 🎉\nAll echoes collected!\n" + next_level_text
+	celebration_label.set_anchors_and_offsets_preset(Control.PRESET_CENTER)
+	celebration_label.position = Vector2(-150, -60)
+	celebration_label.size = Vector2(300, 120)
+	celebration_label.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
+	celebration_label.vertical_alignment = VERTICAL_ALIGNMENT_CENTER
+	celebration_label.add_theme_color_override("font_color", Color.CYAN)
+	celebration_label.add_theme_font_size_override("font_size", 20)
+	celebration_overlay.add_child(celebration_label)
+	
+	# Auto-remove after 3 seconds
+	await get_tree().create_timer(3.0).timeout
+	if is_instance_valid(celebration_overlay):
+		celebration_overlay.queue_free() 

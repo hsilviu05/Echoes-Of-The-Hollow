@@ -243,7 +243,7 @@ position = Vector2(1650, 100)
 position = Vector2(150, 460)
 
 [node name="Player" parent="SpawnPoints" instance=ExtResource("4_7tk33")]
-position = Vector2(152, 418)
+position = Vector2(150, 460)
 
 [node name="RegionTransitions" type="Node2D" parent="."]
 

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cxucved6u1gvg"
-path="res://.godot/imported/corrupted_bot.png-d2a8eff06a9c2a05a31033d0ebe3f6bf.ctex"
+uid="uid://cnc6sjx80mfsu"
+path="res://.godot/imported/player_walk_left_2.png-20b61063bcbb6c157cc9543dcac1912f.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Sprites/corrupted_bot.png"
-dest_files=["res://.godot/imported/corrupted_bot.png-d2a8eff06a9c2a05a31033d0ebe3f6bf.ctex"]
+source_file="res://Sprites/player_walk_left_2.png"
+dest_files=["res://.godot/imported/player_walk_left_2.png-20b61063bcbb6c157cc9543dcac1912f.ctex"]
 
 [params]
 

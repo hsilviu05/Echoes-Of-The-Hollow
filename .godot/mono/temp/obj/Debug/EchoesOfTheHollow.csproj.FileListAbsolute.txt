@@ -1,5 +1,0 @@
-/Users/silviu/EchoesOfTheHollow/.godot/mono/temp/obj/Debug/EchoesOfTheHollow.csproj.AssemblyReference.cache
-/Users/silviu/EchoesOfTheHollow/.godot/mono/temp/obj/Debug/EchoesOfTheHollow.GeneratedMSBuildEditorConfig.editorconfig
-/Users/silviu/EchoesOfTheHollow/.godot/mono/temp/obj/Debug/EchoesOfTheHollow.AssemblyInfoInputs.cache
-/Users/silviu/EchoesOfTheHollow/.godot/mono/temp/obj/Debug/EchoesOfTheHollow.AssemblyInfo.cs
-/Users/silviu/EchoesOfTheHollow/.godot/mono/temp/obj/Debug/EchoesOfTheHollow.csproj.CoreCompileInputs.cache

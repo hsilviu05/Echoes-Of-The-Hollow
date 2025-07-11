@@ -64,6 +64,11 @@ func load_level(level_identifier):
 	
 	print("Loading level: ", level_identifier)
 	
+	# Clear current level echoes in GameManager
+	var game_manager = get_node("../GameManager")
+	if game_manager:
+		game_manager.current_level_echoes.clear()
+	
 	# Remove current level
 	if current_level_node:
 		current_level_node.queue_free()

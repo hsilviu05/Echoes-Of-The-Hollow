@@ -13,6 +13,7 @@ var damage_cooldown = 0.0
 var damage_cooldown_time = 1.0
 var spawn_protection = 0.0
 var spawn_protection_time = 2.0
+var is_invincible = false
 
 signal player_died
 signal health_changed(new_health)
@@ -46,8 +47,8 @@ func _physics_process(delta):
 		die()
 		return
 	
-	# Check for enemy collisions (only if not in spawn protection)
-	if spawn_protection <= 0:
+	# Check for enemy collisions (only if not in spawn protection and not invincible)
+	if spawn_protection <= 0 and not is_invincible:
 		for i in get_slide_collision_count():
 			var collision = get_slide_collision(i)
 			var collider = collision.get_collider()
@@ -87,7 +88,7 @@ func _physics_process(delta):
 			animated_sprite.play("idle")
 
 func take_damage(damage: float):
-	if is_dead or damage_cooldown > 0 or spawn_protection > 0:
+	if is_dead or damage_cooldown > 0 or spawn_protection > 0 or is_invincible:
 		return
 	
 	current_health -= damage
@@ -155,3 +156,14 @@ func set_spawn_position(pos: Vector2):
 		animated_sprite.modulate.a = 1.0
 	
 	print("Player position after: ", global_position) 
+
+func enable_invincibility():
+	is_invincible = true
+	print("🛡️ Player is now invincible!")
+	
+	# Visual feedback - golden glow
+	if animated_sprite:
+		var tween = create_tween()
+		tween.set_loops()
+		tween.tween_property(animated_sprite, "modulate", Color.GOLD, 0.5)
+		tween.tween_property(animated_sprite, "modulate", Color.WHITE, 0.5)
