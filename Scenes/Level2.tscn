@@ -218,7 +218,7 @@ offset_left = -1000.0
 offset_top = -50.0
 offset_right = 1000.0
 offset_bottom = 50.0
-color = Color(0.8, 0.2, 0.2, 0.0)
+color = Color(0.8, 0.2, 0.2, 0)
 
 [node name="Echoes" type="Node2D" parent="."]
 

@@ -1,0 +1,4 @@
+# Placeholder sprite file for player_skeleton.png
+# In a real game, this would be a 32x32 pixel art sprite of Remn in skeleton form
+# The sprite would show a pale, skeletal figure with glowing blue eyes
+# Different frames would be needed for: idle, run, jump, fall, attack, roll animations 
